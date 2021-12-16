@@ -1,7 +1,7 @@
 from itertools import cycle
 import string
 
-# assigning stuff for later
+# assigning lists for later
 lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 end = []
@@ -22,8 +22,10 @@ def final(end):
 
 # convters the text into users choice
 def converter(sub_num, orig, lower, upper):
-    
 
+    # cycles through the original string character by character, appending end with the characters index + the users choice of
+    # sub_number with mod 26 so that the letter is always in the alphabet (accounting for upper and lower case, other symbols don't
+    # get translated in ROT cyphers)
     for i in orig:
         if i.islower():
             end.append(lower[int(lower.index(i) + int(sub_num)) % 26]) 
@@ -39,6 +41,8 @@ def converter(sub_num, orig, lower, upper):
 
 
 def user_input():
+    # asks the user for their cipher choice, checks the choices validity, if valid it runs the converter function with the users
+    # choice, if not it asks the user to choose again.
     print('how many letters away would you like the cipher to be: ')
     choice = input(' ')
 
